@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">dahar</string>
+    <string name="halo">hello!</string>
+    <string name="logo">Logo</string>
+    <string name="some_quote">Lorem ipsum dolor sit amet, consetetur</string>
+    <string name="email">E-Mail</string>
+    <string name="password">Password</string>
+    <string name="password_confirmation">Confirm Password</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="donthave">Dont have an account?</string>
+    <string name="already">Already have an account?</string>
+    <string name="create_account">Create account</string>
+    <string name="login_here">Login here</string>
+</resources>
