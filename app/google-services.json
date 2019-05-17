@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "372066167667",
+    "firebase_url": "https://dahar-f59be.firebaseio.com",
+    "project_id": "dahar-f59be",
+    "storage_bucket": "dahar-f59be.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:372066167667:android:2a24dac3406eda61",
+        "android_client_info": {
+          "package_name": "com.komsi.dahar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "372066167667-7tjfo7rm0mnqnj7onhnl2ojho03gk165.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.komsi.dahar",
+            "certificate_hash": "098e2fc009903a045acbf0fe8488c462d4f8329a"
+          }
+        },
+        {
+          "client_id": "372066167667-kd8i30svjlovt3cp7h9tl4ihrjfbevri.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAI0_dk30VcqHaBIB7C0FslLYJHHUCc36w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "372066167667-kd8i30svjlovt3cp7h9tl4ihrjfbevri.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
