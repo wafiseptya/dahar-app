@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#fff">
+
+
+    <RelativeLayout
+        android:paddingBottom="10dp"
+        android:id="@+id/relativeLayout"
+        android:layout_width="395dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:background="@drawable/card_bg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/food_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="120dp"
+            android:layout_marginLeft="120dp"
+            android:layout_marginTop="10dp"
+            android:text="Simple Title Text"
+            android:textColor="@color/title_text_color"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/jam_buka"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/food_name"
+            android:layout_alignStart="@+id/food_name"
+            android:layout_alignLeft="@+id/food_name"
+            android:layout_marginTop="16dp"
+            android:lineSpacingExtra="8dp"
+            android:text="18.00 - 02.00"
+            android:textColor="@color/content_text_color" />
+
+        <TextView
+            android:id="@+id/dc_place"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/jam_buka"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginEnd="30dp"
+            android:layout_marginRight="30dp"
+            android:text="2.3KM"
+            android:textColor="@color/content_text_color" />
+
+    </RelativeLayout>
+
+    <ImageView
+        android:radius="8dp"
+        android:id="@+id/imageView"
+        android:layout_width="98dp"
+        android:layout_height="61dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="@+id/relativeLayout"
+        app:layout_constraintTop_toTopOf="@+id/relativeLayout"
+        app:srcCompat="@drawable/angkringan" />
+
+</android.support.constraint.ConstraintLayout>
