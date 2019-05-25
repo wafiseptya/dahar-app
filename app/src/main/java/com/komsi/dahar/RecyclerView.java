@@ -3,11 +3,11 @@ package com.komsi.dahar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class SearchView extends AppCompatActivity {
+public class RecyclerView extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search_view);
+        setContentView(R.layout.activity_recycler_view);
     }
 }
