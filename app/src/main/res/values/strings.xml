@@ -15,4 +15,6 @@
     <string name="what_to_eat">What will you eat?</string>
     <string name="search">Search</string>
     <string name="nearest">Nearest place</string>
+    <string name="minimum_password">Password must be 6 characters or longer</string>
+    <string name="auth_failed">Failed to login</string>
 </resources>
