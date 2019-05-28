@@ -11,8 +11,7 @@
     <ImageView
         android:contentDescription="@string/logo"
         android:id="@+id/logo"
-        android:layout_marginTop="100dp"
-        android:layout_marginBottom="60dp"
+        android:layout_marginTop="60dp"
         android:layout_centerHorizontal="true"
         android:src="@drawable/logo"
         android:layout_width="120dp"
@@ -22,6 +21,7 @@
     <TextView
         android:id="@+id/halo"
         android:layout_width="wrap_content"
+        android:layout_marginTop="30dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/logo"
         android:layout_centerHorizontal="true"
