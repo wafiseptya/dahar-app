@@ -1,81 +1,64 @@
 package com.komsi.dahar;
 
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.firebase.ui.database.FirebaseRecyclerOptions;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
-import com.komsi.dahar.models.Places;
+import com.google.firebase.auth.FirebaseAuth;
+import com.komsi.dahar.fragments.HomeListFragment;
+import com.komsi.dahar.fragments.PlacesListFragment;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
-    private RecyclerView mRecyclerView;
-    private DatabaseReference mDatabase;
-    private FirebaseRecyclerAdapter<Places,PlacesViewHolder> mPlacesRVAdapter;
+    private static final String TAG = "MainActivity";
+
+    private FragmentPagerAdapter mPagerAdapter;
+    private ViewPager mViewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.home_page);
+        setContentView(R.layout.main_activity_page);
 
-        mDatabase = FirebaseDatabase.getInstance().getReference().child("places");
-        Query placesQuery = mDatabase.orderByKey();
-        mDatabase.keepSynced(true);
-
-        mRecyclerView = (RecyclerView)findViewById(R.id.recycler_list_places_home);
-        mRecyclerView.setHasFixedSize(true);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-
-        FirebaseRecyclerOptions placesOptions = new FirebaseRecyclerOptions.Builder<Places>()
-                .setQuery(placesQuery, Places.class).build();
-
-        mPlacesRVAdapter = new FirebaseRecyclerAdapter<Places, PlacesViewHolder>(placesOptions) {
-
+        // Create the adapter that will return a fragment for each section
+        mPagerAdapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
+            private final Fragment[] mFragments = new Fragment[] {
+                    new HomeListFragment(),
+                    new HomeListFragment(),
+                    new HomeListFragment(),
+            };
+            private final String[] mFragmentNames = new String[] {
+                    getString(R.string.tab_home),
+                    getString(R.string.tab_search),
+                    getString(R.string.tab_user)
+            };
             @Override
-            protected void onBindViewHolder(@NonNull PlacesViewHolder holder, int position, @NonNull Places model) {
-                holder.setName(model.getName());
-                holder.setOpenHour(model.getOpen_hour());
+            public Fragment getItem(int position) {
+                return mFragments[position];
             }
-
-            @NonNull
             @Override
-            public PlacesViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-
-                View view = LayoutInflater.from(viewGroup.getContext())
-                        .inflate(R.layout.item_foods, viewGroup, false);
-
-                return new PlacesViewHolder(view);
+            public int getCount() {
+                return mFragments.length;
             }
-
-
+            @Override
+            public CharSequence getPageTitle(int position) {
+                return mFragmentNames[position];
+            }
         };
-        mRecyclerView.setAdapter(mPlacesRVAdapter);
+        // Set up the ViewPager with the sections adapter.
+        mViewPager = findViewById(R.id.container);
+        mViewPager.setAdapter(mPagerAdapter);
+        TabLayout tabLayout = findViewById(R.id.tabs);
+        tabLayout.setupWithViewPager(mViewPager);
 
     }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        mPlacesRVAdapter.startListening();
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        mPlacesRVAdapter.stopListening();
-    }
-
-
-
 
 }
