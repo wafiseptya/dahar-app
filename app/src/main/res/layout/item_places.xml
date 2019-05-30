@@ -8,13 +8,13 @@
     app:cardElevation="3dp"
     app:cardUseCompatPadding="true"
     app:cardCornerRadius="2dp"
-    android:id="@+id/parent_recycler_food"
+    android:id="@+id/parent_recycler_home"
     android:background="#fff">
 
 
     <RelativeLayout
         android:padding="6dp"
-        android:id="@+id/relativeLayout_recycler_food"
+        android:id="@+id/relativeLayout_recycler_home"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/card_bg"
@@ -23,7 +23,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <TextView
-            android:id="@+id/food_name"
+            android:id="@+id/places_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
@@ -37,15 +37,27 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/food_price"
+            android:id="@+id/open_place"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/food_name"
-            android:layout_alignStart="@+id/food_name"
-            android:layout_alignLeft="@+id/food_name"
+            android:layout_below="@+id/places_name"
+            android:layout_alignStart="@+id/places_name"
+            android:layout_alignLeft="@+id/places_name"
             android:layout_marginTop="16dp"
             android:lineSpacingExtra="8dp"
-            android:text="Rp. 12.000"
+            android:text="18.00 - 02.00"
+            android:textColor="@color/content_text_color" />
+
+        <TextView
+            android:id="@+id/dc_place"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/open_place"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginEnd="30dp"
+            android:layout_marginRight="30dp"
+            android:text="2.3KM"
             android:textColor="@color/content_text_color" />
 
     </RelativeLayout>
