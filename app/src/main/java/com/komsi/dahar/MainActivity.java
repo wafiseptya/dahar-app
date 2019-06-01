@@ -33,6 +33,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.komsi.dahar.fragments.HomeListFragment;
 import com.komsi.dahar.fragments.PlacesListFragment;
+import com.komsi.dahar.fragments.PlacesSearchFragment;
+import com.komsi.dahar.fragments.SettingFragment;
 
 import java.io.IOException;
 import java.util.List;
@@ -122,18 +124,17 @@ public class MainActivity extends BaseActivity {
         }
 
 
-
         // Create the adapter that will return a fragment for each section
         mPagerAdapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
             private final Fragment[] mFragments = new Fragment[] {
                     new HomeListFragment(),
-                    new HomeListFragment(),
-                    new HomeListFragment(),
+                    new PlacesSearchFragment(),
+                    new SettingFragment(),
             };
             private final String[] mFragmentNames = new String[] {
                     getString(R.string.tab_home),
                     getString(R.string.tab_search),
-                    getString(R.string.tab_user)
+                    getString(R.string.tab_setting)
             };
             @Override
             public Fragment getItem(int position) {

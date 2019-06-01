@@ -26,11 +26,10 @@ import com.komsi.dahar.PlacesDetailActivity;
 import com.komsi.dahar.R;
 import com.komsi.dahar.models.Places;
 import com.komsi.dahar.viewholder.PlacesViewHolder;
-import com.squareup.picasso.Picasso;
 
-public class PlacesListFragment extends Fragment{
+public class PlacesSearchFragment extends Fragment{
 
-    private static final String TAG = "PlacesListFragment";
+    private static final String TAG = "PlacesSearchFragment";
 
     private FusedLocationProviderClient client;
     // [START define_database_reference]
@@ -42,13 +41,12 @@ public class PlacesListFragment extends Fragment{
     private LinearLayoutManager mManager;
 
     TextView textLocation;
-    String openClosePlace;
     LocationManager locationManager;
     String provider;
     String mParam1;
     Location location;
 
-    public PlacesListFragment() {}
+    public PlacesSearchFragment() {}
 
     @Override
     public View onCreateView (LayoutInflater inflater, ViewGroup container,
@@ -63,9 +61,10 @@ public class PlacesListFragment extends Fragment{
         String getData = activity.sendData();
 
 
-        View rootView = inflater.inflate(R.layout.home_page, container, false);
+        View rootView = inflater.inflate(R.layout.search_page, container, false);
 
         textLocation = rootView.findViewById(R.id.location_now);
+        Log.v("Jancok", getData);
 
         if(location!=null)
         {
@@ -73,6 +72,7 @@ public class PlacesListFragment extends Fragment{
         }
         else
         {
+//            Log.v("Tests Debug", getData);
             textLocation.setText(getData);
         }
 
@@ -114,10 +114,7 @@ public class PlacesListFragment extends Fragment{
 
                 viewHolder.namePlaceView.setText(model.getName());
                 viewHolder.locationPlaceView.setText(model.getLocation());
-
-                openClosePlace = model.getOpen_hour() + " - " + model.getClose_hour();
                 viewHolder.openPlaceView.setText(model.getOpen_hour());
-                Picasso.get().load(model.getImage()).into(viewHolder.imagePlaceView);
 
                 final String placesKey = placesRef.getKey();
                 viewHolder.itemView.setOnClickListener(new View.OnClickListener() {

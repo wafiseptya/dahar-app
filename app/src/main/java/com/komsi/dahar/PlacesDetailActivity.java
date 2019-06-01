@@ -1,6 +1,8 @@
 package com.komsi.dahar;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -10,9 +12,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.model.LatLng;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -21,6 +25,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.komsi.dahar.models.Foods;
 import com.komsi.dahar.models.Places;
+import com.squareup.picasso.Picasso;
 
 import org.w3c.dom.Comment;
 
@@ -37,12 +42,18 @@ public class PlacesDetailActivity extends BaseActivity {
     private DatabaseReference mFoodsReference;
     private ValueEventListener mPlacesListener;
     private String mPlacesKey;
+    private String openClosePlace;
+    private Double lat;
+    private Double lng;
     private FoodsAdapter mAdapter;
 
     private TextView namePlaceView;
     private TextView locationPlaceView;
     private TextView openPlaceView;
+    private ImageView imagePlaceView;
     private RecyclerView mFoodsRecycler;
+
+    private Button buttonMaps;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,9 +76,22 @@ public class PlacesDetailActivity extends BaseActivity {
         namePlaceView = findViewById(R.id.placeName);
         locationPlaceView = findViewById(R.id.clockView);
         openPlaceView = findViewById(R.id.distanceView);
-//        mCommentField = findViewById(R.id.fieldCommentText);
-//        mCommentButton = findViewById(R.id.buttonPostComment);
         mFoodsRecycler = findViewById(R.id.recycler_list_foods_place);
+        imagePlaceView = findViewById(R.id.placeImage);
+        buttonMaps = findViewById(R.id.go_to_map);
+        buttonMaps.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LatLng location = new LatLng(lat, lng);
+
+                Bundle args = new Bundle();
+                args.putParcelable("location", location);
+
+                Intent intent = new Intent(PlacesDetailActivity.this, PlacesMapsActivity.class);
+                intent.putExtra("bundle", args);
+                startActivity(intent);
+            }
+        });
 
         mFoodsRecycler.setLayoutManager(new LinearLayoutManager(this));
 
@@ -86,8 +110,17 @@ public class PlacesDetailActivity extends BaseActivity {
                 Places places = dataSnapshot.getValue(Places.class);
                 // [START_EXCLUDE]
                 namePlaceView.setText(places.getName());
-                openPlaceView.setText(places.getOpen_hour());
+
+                openClosePlace = places.getOpen_hour() + " - " + places.getClose_hour();
+
+                openPlaceView.setText(openClosePlace);
                 locationPlaceView.setText(places.getLocation());
+                Picasso.get().load(places.getImage()).into(imagePlaceView);
+
+                lat = places.getLat();
+                lng = places.getLng();
+
+
                 // [END_EXCLUDE]
             }
 
@@ -129,11 +162,13 @@ public class PlacesDetailActivity extends BaseActivity {
 
         public TextView foodNameView;
         public TextView foodPriceView;
+        public ImageView foodImageView;
 
         public FoodsViewHolder(View itemView) {
             super(itemView);
 
             foodNameView = itemView.findViewById(R.id.food_name);
+            foodImageView = itemView.findViewById(R.id.food_image);
             foodPriceView = itemView.findViewById(R.id.food_price);
         }
     }
@@ -252,7 +287,9 @@ public class PlacesDetailActivity extends BaseActivity {
         public void onBindViewHolder(FoodsViewHolder holder, int position) {
             Foods foods = mFoods.get(position);
             holder.foodNameView.setText(foods.name);
-            holder.foodPriceView.setText(String.valueOf(foods.price));
+            String priceFoods = "Rp. " + foods.price;
+            holder.foodPriceView.setText(priceFoods);
+            Picasso.get().load(foods.img).into(holder.foodImageView);
         }
 
         @Override

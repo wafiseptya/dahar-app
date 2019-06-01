@@ -13,6 +13,7 @@ public class PlacesViewHolder extends RecyclerView.ViewHolder {
     public TextView namePlaceView;
     public TextView openPlaceView;
     public TextView locationPlaceView;
+    public ImageView imagePlaceView;
 
 
 
@@ -21,6 +22,7 @@ public class PlacesViewHolder extends RecyclerView.ViewHolder {
 
         namePlaceView = itemView.findViewById(R.id.places_name);
         openPlaceView = itemView.findViewById(R.id.open_place);
+        imagePlaceView = itemView.findViewById(R.id.places_image);
         locationPlaceView = itemView.findViewById(R.id.dc_place);
     }
 

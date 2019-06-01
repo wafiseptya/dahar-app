@@ -7,16 +7,16 @@ public class Foods {
 
     public String name;
     public long price;
-    public String image;
+    public String img;
 
     public Foods() {
         // Default constructor required for calls to DataSnapshot.getValue(Comment.class)
     }
 
-    public Foods(String name, long price, String image) {
+    public Foods(String name, long price, String img) {
         this.name = name;
         this.price = price;
-        this.image = image;
+        this.img = img;
     }
 
 }

@@ -52,7 +52,7 @@
 
     <ImageView
         android:radius="8dp"
-        android:id="@+id/places_image"
+        android:id="@+id/food_image"
         android:layout_width="98dp"
         android:layout_height="61dp"
         android:layout_marginStart="8dp"

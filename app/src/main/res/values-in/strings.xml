@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Dahar-App</string>
+    <string name="already">Sudah punya akun?</string>
+    <string name="auth_failed">Gagal untuk masuk</string>
+    <string name="create_account">Buat sebuah akun</string>
+    <string name="donthave">Belum punya akun?</string>
+    <string name="email">Surel</string>
+    <string name="halo">halo!</string>
+    <string name="login">Masuk</string>
+    <string name="login_here">Masuk di sini</string>
+    <string name="logo">Logo</string>
+    <string name="menu">Menu Makanan</string>
+    <string name="minimum_password">Kata sandi harus 6 karakter atau lebih</string>
+    <string name="nearest">Tempat terdekat</string>
+    <string name="password">Kata Sandi</string>
+    <string name="password_confirmation">Konfirmasi kata sandi</string>
+    <string name="place_location">Lokasi</string>
+    <string name="register">Daftar</string>
+    <string name="search">Pencarian</string>
+    <string name="tab_home">Beranda</string>
+    <string name="tab_search">Pencarian</string>
+    <string name="tab_setting">Atur</string>
+    <string name="some_quote">Temukan makanan disekitarmu</string>
+    <string name="title_activity_places_maps">Peta</string>
+    <string name="what_to_eat">Apa yang ingin kamu makan?</string>
+</resources>

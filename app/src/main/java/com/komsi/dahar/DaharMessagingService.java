@@ -18,7 +18,7 @@ public class DaharMessagingService extends FirebaseMessagingService {
     public void showNotification(String title, String message){
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this,"DaharNotifications")
                 .setContentTitle(title)
-                .setSmallIcon(R.drawable.ic_launcher_background)
+                .setSmallIcon(R.mipmap.icon)
                 .setAutoCancel(true)
                 .setContentText(message);
 
